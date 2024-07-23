@@ -21,17 +21,23 @@ app.get("/astronauts/", (req, res) => {
 //      "payload": data,
 //    });
 //  })
-  doFunc(getAstronauts, req, res);
+  doFunc(getAstronauts, req, res, 0);
 });
 
-function doFunc(f, req, res){
-  f().then(data => {
+function doFunc(f, req, res, arg){
+  f(arg).then(data => {
     res.json({
       "success": true,
       "payload": data,
     });
   })
 }
+
+app.post("/astronauts/", (req, res) => {
+  doFunc(createAstronaut, req, res, req.body);
+  console.log(req.body);
+  //console.log(getAstronauts());
+});
 
 /* 
 
