@@ -15,12 +15,6 @@ const app = express();
 app.use(express.json());
 
 app.get("/astronauts/", (req, res) => {
-//  getAstronauts().then(data => {
-//    res.json({
-//      "success": true,
-//      "payload": data,
-//    });
-//  })
   doFunc(getAstronauts, req, res, 0);
 });
 
@@ -35,8 +29,10 @@ function doFunc(f, req, res, arg){
 
 app.post("/astronauts/", (req, res) => {
   doFunc(createAstronaut, req, res, req.body);
-  console.log(req.body);
-  //console.log(getAstronauts());
+});
+
+app.get("/astronautbyid/:id/", (req, res) => {
+  doFunc(getAstronautById, req, res, req.params.id);
 });
 
 /* 
