@@ -14,6 +14,25 @@ const app = express();
 
 app.use(express.json());
 
+app.get("/astronauts/", (req, res) => {
+//  getAstronauts().then(data => {
+//    res.json({
+//      "success": true,
+//      "payload": data,
+//    });
+//  })
+  doFunc(getAstronauts, req, res);
+});
+
+function doFunc(f, req, res){
+  f().then(data => {
+    res.json({
+      "success": true,
+      "payload": data,
+    });
+  })
+}
+
 /* 
 
 All json responses for this tasks should follow the pattern:
