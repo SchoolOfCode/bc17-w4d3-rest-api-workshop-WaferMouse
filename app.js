@@ -31,7 +31,7 @@ app.post("/astronauts/", (req, res) => {
   doFunc(createAstronaut, req, res, req.body);
 });
 
-app.get("/astronautbyid/:id/", (req, res) => {
+app.get("/astronauts/:id/", (req, res) => {
   doFunc(getAstronautById, req, res, req.params.id);
 });
 
